@@ -14,7 +14,7 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
-      - name: Run a script
-        run: ./my-script.sh
+      - name: Make the script files executable & run a script
+        run: chmod +x my-script.sh my-script.sh
       - name: Run another script
-        run: ./my-another-script.sh
+        run: bash my-another-script.sh
