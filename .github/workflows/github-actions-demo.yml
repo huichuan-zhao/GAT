@@ -1,6 +1,6 @@
 name: ZHC GitHub Actions Demo
 run-name: ZHC ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on: [workflow_dispatch]
 env:
   POSTGRES_HOST: postgresA
   POSTGRES_PORT: 54321
