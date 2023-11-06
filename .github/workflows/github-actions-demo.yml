@@ -1,6 +1,29 @@
 name: ZHC GitHub Actions Demo
 run-name: ZHC ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true
+        type: boolean
+      tags:
+        description: 'Test scenario tags'
+        required: true
+        type: string
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
 env:
   POSTGRES_HOST: postgresA
   POSTGRES_PORT: 54321
@@ -60,3 +83,5 @@ jobs:
         env:
           INPUTS_CONTEXT: ${{ toJson(inputs) }}
         run: echo "$INPUTS_CONTEXT"
+      - name: Print the input tag to STDOUT
+        run: echo  The tags are ${{ inputs.tags }}
